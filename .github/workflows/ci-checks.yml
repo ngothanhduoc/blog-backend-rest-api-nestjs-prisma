@@ -11,17 +11,6 @@ on:
       - master
       - staging
 
-env:
-  GOOGLE_AUTH_CLIENT_ID: 'xxx'
-  GOOGLE_AUTH_CLIENT_SECRET: 'xxx'
-  JWT_ACCESS_TOKEN_EXPIRATION_TIME_SECONDS: 900
-  JWT_REFRESH_TOKEN_EXPIRATION_TIME_SECONDS: 604800
-  JWT_AUDIENCE: 'xxx'
-  JWK_PUB_AND_PRIV_KEYSET_BASE64: 'xxx'
-  AWS_ACCESS_KEY_ID: 'xxx'
-  AWS_SECRET_ACCESS_KEY: 'xxx'
-  AWS_KMS_KEY_ID: 'xxx'
-
 jobs:
   build:
     runs-on: ubuntu-latest
