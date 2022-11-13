@@ -1,0 +1,7 @@
+services:
+  api:
+    domain: ${HOST}
+    build: .
+    port: 3000
+    environment:
+      - DATABASE_URL
