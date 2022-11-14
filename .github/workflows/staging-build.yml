@@ -52,7 +52,7 @@ jobs:
 
       - name: Run db migration
         run: |
-          prisma=$(convox run api -a test-prisma --release RHTVYCSUSKD npx prisma migrate deploy | sed "2 d")
+          prisma=$(convox run api -a test-prisma --release ${{ steps.get_releases_id.outputs.releases_id }} npx prisma migrate deploy | sed "2 d")
           echo $prisma
           errors=$(echo $prisma | grep Error)
           faileds=$(echo $prisma | grep failed)
