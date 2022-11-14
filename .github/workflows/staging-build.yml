@@ -59,12 +59,13 @@ jobs:
           
           if [ -n "$build_failed" ]
           then
-            echo "Convox build failed with message ${build_failed}"
+            echo "Convox build failed with the message"
             exit 1
           fi
+
           if [ -n "$build_error" ]
           then
-            echo "Convox build Error ${build_error}"
+            echo "Convox build Error with the message"
             exit 1
           fi
       
