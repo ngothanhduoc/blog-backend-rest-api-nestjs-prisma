@@ -58,7 +58,7 @@ jobs:
           buildFailed=$(echo $prisma | grep failed)
           if [ -n "$buildFailed" ]
           then
-            echo "Convox build failed ${{faileds}}"
+            echo "Convox build failed ${{buildFailed}}"
             exit 1
           fi
           if [ -n "$buildError" ]
