@@ -51,7 +51,16 @@ jobs:
           echo "::set-output name=releases_id::$release"
 
       - name: Run db migration
-        run: convox run api -a test-prisma --release ${{ steps.get_releases_id.outputs.releases_id }} npx prisma migrate deploy | sed "2 d"
+        run: |
+          prisma=$(convox run api -a test-prisma --release RHTVYCSUSKD npx prisma migrate deploy | sed "2 d")
+          echo $prisma
+          errors=$(echo $prisma | grep Error)
+          faileds=$(echo $prisma | grep failed)
+          if [ -n "$faileds" ]
+          then
+            echo "Convox build failed"
+            exit 1
+          fi
       
       - name: Deploy Convox
         run: convox releases promote ${{ steps.get_releases_id.outputs.releases_id }} -a test-prisma
