@@ -54,16 +54,16 @@ jobs:
         run: |
           prisma=$(convox run api -a test-prisma --release ${{ steps.get_releases_id.outputs.releases_id }} npx prisma migrate deploy | sed "2 d")
           echo $prisma
-          error=$(echo $prisma | grep Error)
-          failed=$(echo $prisma | grep failed)
+          build_error=$(echo $prisma | grep Error)
+          build_failed=$(echo $prisma | grep failed)
           if [ -n "$buildFailed" ]
           then
-            echo "Convox build failed ${{failed}}"
+            echo "Convox build failed with message ${build_failed}"
             exit 1
           fi
           if [ -n "$buildError" ]
           then
-            echo "Convox build Error ${{error}}"
+            echo "Convox build Error ${build_error}"
             exit 1
           fi
       
